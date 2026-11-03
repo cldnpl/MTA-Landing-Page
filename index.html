@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monster Truck Arena — Mixed reality monster trucks for Apple Vision Pro</title>
+<meta name="description" content="A mixed reality battle game for Apple Vision Pro. Monster trucks fight in an arena you place anywhere in the room, at any size. Steer with a pinch, fire with the other hand.">
+<meta name="theme-color" content="#242225">
+<link rel="icon" href="assets/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Monster Truck Arena">
+<meta property="og:description" content="Monster trucks fight in an arena you place anywhere in your room. Built for Apple Vision Pro.">
+<meta property="og:image" content="assets/trucks/RancherOrange.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+    <div class="shell nav__inner">
+        <a class="wordmark" href="#top">
+            <img src="assets/icon.png" alt="" width="36" height="36">
+            <span>Monster Truck<br>Arena</span>
+        </a>
+        <nav class="nav__links" aria-label="Sections">
+            <a href="#arena">Arena</a>
+            <a href="#controls">Controls</a>
+            <a href="#garage">Garage</a>
+            <a href="#pickups">Pick-ups</a>
+            <a href="#play">Play</a>
+        </nav>
+        <a class="btn btn--sky btn--small" href="#release">Coming soon</a>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+    <div class="hero__sky" aria-hidden="true"></div>
+    <div class="shell hero__inner">
+        <div class="hero__copy">
+            <p class="badge"><span class="badge__dot"></span>Built for Apple Vision Pro</p>
+            <h1 class="display display--hero">Monster<br>Truck Arena</h1>
+            <p class="lede">The arena lands on your floor, your table, your rug. Four trucks, one dirt bowl, and nothing between them but physics. Steer with a pinch. Fire with the other hand.</p>
+            <div class="hero__actions">
+                <a class="btn btn--blaze" href="#release">Coming soon</a>
+                <a class="btn btn--sky" href="#controls">See how it plays</a>
+            </div>
+            <p class="hero__note">Not on the App Store yet. Follow the build while it gets there.</p>
+        </div>
+
+        <div class="stage">
+            <div class="stage__glow" aria-hidden="true"></div>
+            <div class="stage__beam stage__beam--left" aria-hidden="true"></div>
+            <div class="stage__beam stage__beam--right" aria-hidden="true"></div>
+            <div class="stage__dirt" aria-hidden="true"></div>
+            <img class="truck truck--back-left" src="assets/trucks/StagecoachBlue.png" alt="The Stagecoach, painted blue" width="580" height="551" fetchpriority="low">
+            <img class="truck truck--back-right" src="assets/trucks/IronHorseGreen.png" alt="The Iron Horse, painted green" width="580" height="551" fetchpriority="low">
+            <img class="truck truck--lead" src="assets/trucks/RancherOrange.png" alt="The Rancher, painted orange" width="580" height="551" fetchpriority="high">
+        </div>
+    </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+        <span>Mixed reality</span><span class="ticker__dot"></span>
+        <span>SharePlay</span><span class="ticker__dot"></span>
+        <span>Mystery boxes</span><span class="ticker__dot"></span>
+        <span>Boost pads</span><span class="ticker__dot"></span>
+        <span>Knockouts</span><span class="ticker__dot"></span>
+        <span>Real physics</span><span class="ticker__dot"></span>
+        <span>Game Center</span><span class="ticker__dot"></span>
+        <span>Mixed reality</span><span class="ticker__dot"></span>
+        <span>SharePlay</span><span class="ticker__dot"></span>
+        <span>Mystery boxes</span><span class="ticker__dot"></span>
+        <span>Boost pads</span><span class="ticker__dot"></span>
+        <span>Knockouts</span><span class="ticker__dot"></span>
+        <span>Real physics</span><span class="ticker__dot"></span>
+        <span>Game Center</span><span class="ticker__dot"></span>
+    </div>
+</div>
+
+<section class="section" id="arena">
+    <div class="shell">
+        <header class="section__head reveal">
+            <p class="eyebrow">The arena</p>
+            <h2 class="display display--section">Your room is the stadium</h2>
+            <p class="section__lede">Dusty Gulch opens in front of you, pinned wherever you put it. Shrink it onto a coffee table or blow it up across the living room, then leave it there all evening.</p>
+        </header>
+
+        <div class="cards cards--three">
+            <article class="card reveal">
+                <div class="card__icon card__icon--blaze" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                </div>
+                <h3>Put it anywhere</h3>
+                <p>Move it, turn it, size it, then tap Done and it stays. Need more room mid-match? Resize sits right there on the match bar.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card__icon card__icon--sky" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5"/><path d="M20 15v5h-5"/><path d="M20 9V4h-5"/><path d="M4 15v5h5"/></svg>
+                </div>
+                <h3>Any size you like</h3>
+                <p>Tabletop or room-scale, the whole bowl scales with it: banks, ramps, fence and every loose barrel on the dirt.</p>
+            </article>
+            <article class="card reveal">
+                <div class="card__icon card__icon--nitro" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="3"/><circle cx="17.5" cy="17" r="3"/><path d="M4 13.5 6 8h6l3.5 5.5"/><path d="M10 17h4.5"/></svg>
+                </div>
+                <h3>Everything is physical</h3>
+                <p>Trucks climb the banks, boot crates across the floor and knock the bucking chutes apart a rail at a time. Everyone sees the mess land in the same place.</p>
+            </article>
+        </div>
+
+        <div class="strip reveal">
+            <div class="strip__item"><span class="strip__num">4</span><span class="strip__label">trucks per match</span></div>
+            <div class="strip__item"><span class="strip__num">3</span><span class="strip__label">weapons in the boxes</span></div>
+            <div class="strip__item"><span class="strip__num">3 · 5 · 7</span><span class="strip__label">minute matches</span></div>
+            <div class="strip__item"><span class="strip__num">5</span><span class="strip__label">languages</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="section section--alt" id="controls">
+    <div class="shell">
+        <header class="section__head reveal">
+            <p class="eyebrow">Controls</p>
+            <h2 class="display display--section">Hands down. Literally.</h2>
+            <p class="section__lede">No arms held out in front of your face. Rest them in your lap and drive the whole match from there.</p>
+        </header>
+
+        <div class="cards cards--two">
+            <article class="control reveal">
+                <div class="control__demo control__demo--steer" aria-hidden="true">
+                    <div class="slider">
+                        <div class="slider__track"></div>
+                        <div class="slider__knob" data-steer-knob></div>
+                    </div>
+                    <div class="control__hint"><span>left</span><span>right</span></div>
+                </div>
+                <h3>Steer</h3>
+                <p>Pinch with one hand and slide it right or left. A live slider shows how far you are turning, and an arrow on the ground ahead of the truck points where you are headed.</p>
+            </article>
+            <article class="control reveal">
+                <div class="control__demo control__demo--fire" aria-hidden="true">
+                    <div class="pulse"><span class="pulse__ring"></span><span class="pulse__ring"></span><span class="pulse__core"></span></div>
+                </div>
+                <h3>Fire</h3>
+                <p>Pinch with the other hand. Hold it down with a rifle and it keeps firing until you let go.</p>
+            </article>
+        </div>
+
+        <ul class="notes reveal">
+            <li><strong>Left or right handed.</strong> Swap which hand steers and which one fires in Settings, along with how sharply it turns.</li>
+            <li><strong>Tooltips while you learn.</strong> A hint floats by each index finger until you want it gone.</li>
+            <li><strong>Practice first.</strong> A guided lap teaches steering, dodging and weapons before anyone shoots back.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section" id="garage">
+    <div class="shell">
+        <header class="section__head reveal">
+            <p class="eyebrow">The garage</p>
+            <h2 class="display display--section">Pick your ride</h2>
+            <p class="section__lede">Three trucks, four paint jobs. Your colour follows you onto the scoreboard, the name over your roof and the ring around your photo.</p>
+        </header>
+
+        <div class="cards cards--three garage">
+            <article class="truck-card reveal" data-truck="Rancher">
+                <div class="truck-card__art">
+                    <img src="assets/trucks/RancherOrange.png" alt="The Rancher monster truck" width="580" height="551" loading="lazy" data-truck-image>
+                </div>
+                <h3>Rancher</h3>
+                <p>The one everybody starts in. Roll bar, stacks, and a bed wide enough to carry whatever the last box handed you.</p>
+                <div class="swatches" role="group" aria-label="Rancher paint"></div>
+            </article>
+            <article class="truck-card reveal" data-truck="IronHorse">
+                <div class="truck-card__art">
+                    <img src="assets/trucks/IronHorseGreen.png" alt="The Iron Horse monster truck" width="580" height="551" loading="lazy" data-truck-image>
+                </div>
+                <h3>Iron Horse</h3>
+                <p>A steam locomotive on four tyres. The weapon rides the boiler, right between the smokestack and the cab.</p>
+                <div class="swatches" role="group" aria-label="Iron Horse paint"></div>
+            </article>
+            <article class="truck-card reveal" data-truck="Stagecoach">
+                <div class="truck-card__art">
+                    <img src="assets/trucks/StagecoachBlue.png" alt="The Stagecoach monster truck" width="580" height="551" loading="lazy" data-truck-image>
+                </div>
+                <h3>Stagecoach</h3>
+                <p>Tall, lantern-lit and top-heavy, with the luggage strapped on the roof doing duty as a gun rack.</p>
+                <div class="swatches" role="group" aria-label="Stagecoach paint"></div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section--alt" id="pickups">
+    <div class="shell">
+        <header class="section__head reveal">
+            <p class="eyebrow">Pick-ups</p>
+            <h2 class="display display--section">Drive through the box</h2>
+            <p class="section__lede">Mystery boxes sit out on the borders of the dirt. Clip one and you get whatever is inside, with a few shots to spend before it is gone.</p>
+        </header>
+
+        <div class="cards cards--four">
+            <article class="pickup pickup--crash reveal">
+                <span class="pickup__tag">Weapon</span>
+                <h3>Missile</h3>
+                <p>Straight ahead, one shot. Whatever it hits is out of the match until it respawns.</p>
+            </article>
+            <article class="pickup pickup--sky reveal">
+                <span class="pickup__tag">Weapon</span>
+                <h3>Freeze</h3>
+                <p>Three missiles fan out. Each one locks a truck in ice for a few seconds, free for anybody to ram.</p>
+            </article>
+            <article class="pickup pickup--jackpot reveal">
+                <span class="pickup__tag">Weapon</span>
+                <h3>Rifle</h3>
+                <p>Fourteen rounds mounted on the flanks. Tap for a burst, hold to keep it chewing through health.</p>
+            </article>
+            <article class="pickup pickup--nitro reveal">
+                <span class="pickup__tag">Hazard</span>
+                <h3>Boost pads</h3>
+                <p>Hit the arrows on the centre ramps at full speed for 70% more of it. Enough to clear the boxcar, and to flatten whoever you land on.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="play">
+    <div class="shell">
+        <header class="section__head reveal">
+            <p class="eyebrow">Playing together</p>
+            <h2 class="display display--section">Bring friends, or bots</h2>
+        </header>
+
+        <div class="cards cards--two">
+            <article class="mode mode--blaze reveal">
+                <h3>Play with friends</h3>
+                <p>Start SharePlay on a FaceTime call and the lobby opens for everyone on it. Take a free seat, pick free-for-all or two teams of two, drag players between sides and roll out once everybody has placed their arena.</p>
+                <ul class="mode__list">
+                    <li>A card each, with your colour, your name and a crown for the host</li>
+                    <li>Teammates are safe from your shots and your bumper</li>
+                    <li>Matches run 3, 5 or 7 minutes, then straight into the next round</li>
+                </ul>
+            </article>
+            <article class="mode mode--sky reveal">
+                <h3>Play on your own</h3>
+                <p>Fill the empty seats with bots that drive, grab boxes, fire back and finish on the scoreboard like anyone else. Or take the practice lap and learn the arena with nobody watching.</p>
+                <ul class="mode__list">
+                    <li>Add or send away a bot from any seat</li>
+                    <li>Same colours, same rules, same results</li>
+                    <li>Game Center keeps your kills, your wins and your achievements</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="release" id="release">
+    <div class="shell release__inner">
+        <h2 class="display display--section reveal">Not out yet</h2>
+        <p class="release__lede reveal">Monster Truck Arena is still being built for Apple Vision Pro. The App Store link lands here the day it ships.</p>
+        <div class="release__actions reveal">
+            <span class="store">
+                <svg class="store__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 10.5c0-2.2 2.9-3.5 9.5-3.5s9.5 1.3 9.5 3.5c0 2.6-1.3 6-4 6-1.9 0-2.9-1.1-3.9-2.1-.6-.6-1-1-1.6-1s-1 .4-1.6 1c-1 1-2 2.1-3.9 2.1-2.7 0-4-3.4-4-6Z"/></svg>
+                <span class="store__text"><small>Coming soon to</small><strong>Apple Vision Pro</strong></span>
+            </span>
+            <a class="btn btn--blaze" href="https://github.com/lorenzomatrullo/MonsterTruckArena">Follow the build</a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="shell footer__inner">
+        <a class="wordmark" href="#top">
+            <img src="assets/icon.png" alt="" width="36" height="36">
+            <span>Monster Truck<br>Arena</span>
+        </a>
+        <p class="footer__legal">Lettering in Black Han Sans, under the SIL Open Font License. Apple, Apple Vision Pro, SharePlay and Game Center are trademarks of Apple Inc. This game is not affiliated with Apple.</p>
+    </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

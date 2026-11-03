@@ -1,0 +1,1001 @@
+/* Monster Truck Arena – landing page
+   The palette, the lettering and the chunky lipped shapes come from the app's brand,
+   in MonsterTruckKit's Color+Brand.swift and Lipped.swift. */
+
+:root {
+    /* Brand palette */
+    --tire: #3C3E3D;
+    --asphalt: #242225;
+    --blaze: #FF963C;
+    --blaze-lip: #EA5A32;
+    --blaze-rim: #F5CBA7;
+    --sky: #4DB8F3;
+    --sky-lip: #0093D7;
+    --frost: #D2F7FD;
+    --jackpot: #FFDD31;
+    --jackpot-lip: #FFC000;
+    --nitro: #B1FF3C;
+    --nitro-lip: #6CEA32;
+    --nitro-rim: #EDFFCF;
+    --crash: #FE744D;
+    --crash-lip: #EA3232;
+    --crash-rim: #FFC9BA;
+    --gravel: #A9A4A1;
+    --gravel-lip: #6C6461;
+
+    /* Page */
+    --ground: #1A181B;
+    --ink: #FFFFFF;
+    --ink-soft: #C9C4C1;
+    --ink-dim: #8E8A88;
+    --panel: rgba(255, 255, 255, 0.05);
+    --panel-line: rgba(255, 255, 255, 0.11);
+
+    --display: "Black Han Sans", "Arial Black", system-ui, sans-serif;
+    --text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+
+    --shell: 1180px;
+    --radius: 20px;
+    --lip: 6px;
+    --rim: 2px;
+
+    color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+}
+
+body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--text);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--jackpot);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: 20px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 20px;
+    top: -200px;
+    z-index: 50;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: var(--jackpot);
+    color: var(--asphalt);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 20px;
+}
+
+/* The brand's lettering: flat, tight and shouted */
+.display {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.96;
+    /* The brand's lip, a hard shade under the white, as the app draws its title */
+    text-shadow: 0 0.055em 0 var(--sky);
+}
+
+.display--hero {
+    font-size: clamp(3rem, 9.5vw, 6.5rem);
+    margin-bottom: 24px;
+}
+
+.display--section {
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    text-shadow: 0 0.05em 0 var(--blaze-lip);
+}
+
+.eyebrow {
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.85rem;
+    color: var(--blaze);
+    margin-bottom: 10px;
+}
+
+.lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--ink-soft);
+    max-width: 46ch;
+}
+
+/* The chunky shape: a face standing on a darker lip, under a light rim */
+.btn {
+    --face: var(--blaze);
+    --face-lip: var(--blaze-lip);
+    --face-rim: var(--blaze-rim);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0 28px;
+    border: 0;
+    border-radius: 16px;
+    background: var(--face);
+    color: #FFFFFF;
+    font-family: var(--display);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 var(--lip) 0 var(--face-lip), 0 calc(var(--rim) * -1) 0 var(--face-rim);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 calc(var(--lip) + 2px) 0 var(--face-lip), 0 calc(var(--rim) * -1) 0 var(--face-rim);
+}
+
+/* Sunk onto its lip, as the app's buttons are while pressed */
+.btn:active {
+    transform: translateY(var(--lip));
+    box-shadow: 0 0 0 var(--face-lip), 0 calc(var(--rim) * -1) 0 var(--face-rim);
+}
+
+.btn--sky {
+    --face: var(--sky);
+    --face-lip: var(--sky-lip);
+    --face-rim: var(--frost);
+}
+
+.btn--small {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 0.92rem;
+    --lip: 4px;
+}
+
+/* Nav */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    background: rgba(26, 24, 27, 0.72);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.nav--stuck {
+    border-bottom-color: var(--panel-line);
+    background: rgba(26, 24, 27, 0.9);
+}
+
+.nav__inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-block: 12px;
+}
+
+.wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.wordmark img {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: linear-gradient(180deg, var(--blaze), var(--blaze-lip));
+}
+
+.nav__links {
+    display: flex;
+    gap: 22px;
+    margin-left: auto;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.nav__links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-block: 6px;
+    transition: color 0.2s ease;
+}
+
+.nav__links a:hover {
+    color: var(--ink);
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    padding-block: clamp(48px, 7vw, 92px) clamp(60px, 8vw, 110px);
+    overflow: hidden;
+}
+
+/* The app icon's warm sky over the dirt */
+.hero__sky {
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 120%;
+    background:
+        radial-gradient(60% 55% at 72% 18%, rgba(255, 150, 60, 0.3), transparent 70%),
+        radial-gradient(45% 45% at 18% 8%, rgba(77, 184, 243, 0.16), transparent 72%);
+    pointer-events: none;
+}
+
+.hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 15px 7px 11px;
+    margin-bottom: 22px;
+    border: 1px solid var(--panel-line);
+    border-radius: 999px;
+    background: var(--panel);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.badge__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--nitro);
+    box-shadow: 0 0 10px var(--nitro);
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.hero__note {
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: var(--ink-dim);
+}
+
+/* The arena stage: a dirt bowl lit from above, with the trucks standing on it */
+.stage {
+    position: relative;
+    aspect-ratio: 1 / 0.92;
+    min-height: 320px;
+}
+
+.stage__glow {
+    position: absolute;
+    inset: 8% 0 10%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 60%, rgba(255, 150, 60, 0.4), transparent 62%);
+    filter: blur(22px);
+}
+
+/* Stadium lights, falling as cones onto the dirt */
+.stage__beam {
+    position: absolute;
+    top: -8%;
+    width: 36%;
+    height: 74%;
+    background: linear-gradient(to bottom, rgba(255, 221, 49, 0.16), rgba(255, 221, 49, 0.02) 70%, transparent);
+    clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+    filter: blur(16px);
+}
+
+.stage__beam--left {
+    left: 4%;
+}
+
+.stage__beam--right {
+    right: 4%;
+}
+
+/* The dirt, on a lip of its own like every chunky shape in the app */
+.stage__dirt {
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    bottom: 12%;
+    height: 34%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 28%, #8A6440, #4A3324 72%);
+    box-shadow:
+        0 14px 0 #2E2017,
+        inset 0 3px 0 rgba(255, 201, 134, 0.35),
+        0 0 90px 30px rgba(255, 150, 60, 0.14);
+}
+
+.truck {
+    position: absolute;
+    width: 56%;
+    filter: drop-shadow(0 22px 16px rgba(0, 0, 0, 0.55));
+    animation: idle 5.5s ease-in-out infinite;
+}
+
+.truck--lead {
+    left: 50%;
+    bottom: 14%;
+    width: 62%;
+    translate: -50% 0;
+    z-index: 2;
+}
+
+.truck--back-left {
+    left: -4%;
+    bottom: 26%;
+    width: 44%;
+    opacity: 0.92;
+    animation-delay: -1.8s;
+}
+
+.truck--back-right {
+    right: -4%;
+    bottom: 28%;
+    width: 42%;
+    opacity: 0.92;
+    animation-delay: -3.4s;
+}
+
+@keyframes idle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(-1.2deg); }
+}
+
+/* Ticker */
+.ticker {
+    border-block: 1px solid var(--panel-line);
+    background: linear-gradient(90deg, rgba(255, 150, 60, 0.1), rgba(77, 184, 243, 0.08));
+    overflow: hidden;
+    padding-block: 14px;
+}
+
+.ticker__track {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    width: max-content;
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    color: var(--blaze);
+    animation: roll 36s linear infinite;
+}
+
+.ticker__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gravel-lip);
+    flex-shrink: 0;
+}
+
+@keyframes roll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Sections */
+.section {
+    padding-block: clamp(56px, 6vw, 84px);
+}
+
+.section--alt {
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.025) 12%, rgba(255, 255, 255, 0.025) 88%, transparent);
+}
+
+.section__head {
+    max-width: 62ch;
+    margin-bottom: clamp(32px, 4vw, 52px);
+}
+
+.section__lede {
+    margin-top: 18px;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+}
+
+.cards {
+    display: grid;
+    gap: 20px;
+}
+
+.cards--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cards--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card,
+.control,
+.truck-card,
+.pickup,
+.mode {
+    padding: 26px;
+    border: 1px solid var(--panel-line);
+    border-radius: var(--radius);
+    background: var(--panel);
+}
+
+.card h3,
+.control h3,
+.truck-card h3,
+.pickup h3,
+.mode h3 {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 1.35rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 10px;
+}
+
+.card p,
+.control p,
+.truck-card p,
+.pickup p,
+.mode p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+}
+
+.card__icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    color: var(--asphalt);
+}
+
+.card__icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.card__icon--blaze {
+    background: var(--blaze);
+    box-shadow: 0 4px 0 var(--blaze-lip);
+}
+
+.card__icon--sky {
+    background: var(--sky);
+    box-shadow: 0 4px 0 var(--sky-lip);
+}
+
+.card__icon--nitro {
+    background: var(--nitro);
+    box-shadow: 0 4px 0 var(--nitro-lip);
+}
+
+/* Numbers strip */
+.strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 26px;
+    border: 1px solid var(--panel-line);
+    border-radius: var(--radius);
+    background: rgba(36, 34, 37, 0.7);
+}
+
+.strip__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+}
+
+.strip__num {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    color: var(--jackpot);
+    line-height: 1;
+}
+
+.strip__label {
+    font-size: 0.86rem;
+    color: var(--ink-dim);
+}
+
+/* Controls */
+.control__demo {
+    display: grid;
+    place-items: center;
+    height: 150px;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+}
+
+.control__demo--steer {
+    align-content: center;
+    gap: 12px;
+    padding-inline: 28px;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 260px;
+    height: 34px;
+    display: grid;
+    align-items: center;
+}
+
+.slider__track {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--tire);
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.slider__knob {
+    position: absolute;
+    left: 50%;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--sky);
+    box-shadow: 0 4px 0 var(--sky-lip), 0 -2px 0 var(--frost);
+    translate: -50% 0;
+}
+
+/* Runs only while the card is on screen */
+.slider__knob.is-steering {
+    animation: steer 3.6s ease-in-out infinite;
+}
+
+@keyframes steer {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-100px); }
+    75% { transform: translateX(100px); }
+}
+
+.control__demo--steer .control__hint {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 260px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+}
+
+.pulse {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 110px;
+    height: 110px;
+}
+
+.pulse__core {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--blaze);
+    box-shadow: 0 0 22px rgba(255, 150, 60, 0.75);
+}
+
+.pulse__ring {
+    position: absolute;
+    inset: 0;
+    border: 3px solid var(--blaze);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ping 2.6s ease-out infinite;
+}
+
+.pulse__ring:nth-child(2) {
+    animation-delay: 1.3s;
+}
+
+@keyframes ping {
+    0% { transform: scale(0.3); opacity: 0.9; }
+    80% { transform: scale(1); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+.notes {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 20px 0 0;
+    padding: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+}
+
+.notes li {
+    padding-left: 16px;
+    border-left: 3px solid var(--blaze);
+}
+
+.notes strong {
+    color: var(--ink);
+    display: block;
+}
+
+/* Garage */
+.truck-card__art {
+    display: grid;
+    place-items: center;
+    height: 210px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    background: radial-gradient(ellipse at 50% 85%, rgba(255, 150, 60, 0.2), transparent 65%), rgba(0, 0, 0, 0.26);
+}
+
+.truck-card__art img {
+    width: 82%;
+    filter: drop-shadow(0 16px 12px rgba(0, 0, 0, 0.5));
+    transition: opacity 0.18s ease, transform 0.3s ease;
+}
+
+.truck-card:hover .truck-card__art img {
+    transform: translateY(-6px);
+}
+
+.truck-card__art img.is-swapping {
+    opacity: 0;
+}
+
+.swatches {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.swatch {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 11px;
+    cursor: pointer;
+    background: var(--face);
+    box-shadow: 0 4px 0 var(--face-lip);
+    transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.swatch:hover {
+    transform: translateY(-2px);
+}
+
+.swatch[aria-pressed="true"] {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--face-lip), 0 0 0 3px rgba(255, 255, 255, 0.85);
+}
+
+/* Pick-ups */
+.pickup {
+    border-top: 4px solid var(--accent, var(--blaze));
+}
+
+.pickup--crash { --accent: var(--crash); }
+.pickup--sky { --accent: var(--sky); }
+.pickup--jackpot { --accent: var(--jackpot); }
+.pickup--nitro { --accent: var(--nitro); }
+
+.pickup__tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Modes */
+.mode {
+    padding: 32px;
+}
+
+.mode--blaze {
+    background: linear-gradient(170deg, rgba(255, 150, 60, 0.14), var(--panel) 55%);
+}
+
+.mode--sky {
+    background: linear-gradient(170deg, rgba(77, 184, 243, 0.14), var(--panel) 55%);
+}
+
+.mode__list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+}
+
+.mode__list li {
+    position: relative;
+    padding-left: 26px;
+}
+
+.mode__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.52em;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background: var(--jackpot);
+    box-shadow: 0 2px 0 var(--jackpot-lip);
+}
+
+/* Release */
+.release {
+    padding-block: clamp(70px, 8vw, 112px);
+    background:
+        radial-gradient(70% 90% at 50% 100%, rgba(255, 150, 60, 0.22), transparent 70%),
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+}
+
+.release__inner {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+}
+
+.release__lede {
+    max-width: 48ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+}
+
+.release__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+/* A placeholder until the app is on the store */
+.store {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 22px;
+    border: 1px solid var(--panel-line);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--ink-dim);
+}
+
+.store__glyph {
+    width: 28px;
+    height: 28px;
+}
+
+.store__text {
+    display: grid;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.store__text small {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.store__text strong {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--panel-line);
+    padding-block: 36px;
+}
+
+.footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer__legal {
+    max-width: 62ch;
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+}
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-in {
+    opacity: 1;
+    transform: none;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .hero__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .stage {
+        order: -1;
+        max-width: 520px;
+        margin-inline: auto;
+        width: 100%;
+    }
+
+    .cards--three,
+    .cards--four,
+    .notes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav__links {
+        display: none;
+    }
+
+    .nav__inner {
+        justify-content: space-between;
+    }
+
+    .wordmark {
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 620px) {
+    body {
+        font-size: 16px;
+    }
+
+    .cards--two,
+    .cards--three,
+    .cards--four,
+    .notes {
+        grid-template-columns: 1fr;
+    }
+
+    .strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lede {
+        max-width: none;
+    }
+
+    .mode {
+        padding: 24px;
+    }
+
+    .hero__actions .btn {
+        flex: 1 1 100%;
+    }
+
+    /* The wordmark and the nav button have to share a narrow bar */
+    .wordmark {
+        font-size: 0.74rem;
+    }
+
+    .btn--small {
+        padding: 0 14px;
+        font-size: 0.84rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .truck,
+    .ticker__track,
+    .pulse__ring,
+    .slider__knob {
+        animation: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .btn,
+    .swatch,
+    .truck-card__art img {
+        transition: none;
+    }
+}
